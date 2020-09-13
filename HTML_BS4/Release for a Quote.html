@@ -53,6 +53,22 @@
 		data-background="assets/images/_smarty/boxed_background/1.jpg"
 	-->
 	<body class="Construction">	 
+
+
+
+		<style>
+            h2 {
+               color: rgb(243, 30, 30); 
+            }
+            
+            body {
+                background-color: rgb(131, 160, 161);
+            }
+            
+
+        </style>
+
+
             
 		<!-- SLIDE TOP -->
 		<div id="slidetop">
@@ -201,73 +217,411 @@
 					</div>
 				</header>
 				<!-- /Top Nav -->
-
+            
 			</div>
      
             <img src="demo_files/images/elevator/AucklandSkyTower.png" alt="img"  width="1800" height="500"/>
-      
+	  
+			<!-- START SCRIP -->
+			<script>
+				
+				
 
-            <div id="quote">
-                <h1>Form</h1>
-
-                <div id="residential">
-                    <h2>RESIDENTIAL</h2>
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/> 
-                    <label for="number">Number Apartament</label>
-
-                    <input type="text" id="numberid" placeholder="20" required="required" number="number"/>
-                    <label for="number">Number Floors</label>
-
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Basement </label>
-                </div>
-
-                <hr class="m-0" /><!-- 1px line separator -->
-
-                <div id="comercial">
-                    <h2>COMERCIAL</h2>
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Distinct</label>
-
-                    <input type="text" id="numberid" placeholder="20" required="required" number="number"/>
-                    <label for="number">Number Floors</label>
-
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Basement </label>
-
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Parking </label>
-
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number ElevatorCage</label>
-
-
-                </div>
-
-                <hr class="m-0" /><!-- 1px line separator -->
-
-                <div id="corporate">
-                    <h2>CORPORATE</h2>
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Separate</label>
-
-                    <input type="text" id="numberid" placeholder="20" required="required" number="number"/>
-                    <label for="number">Number FloorsContained</label>
+				function displayDivSelecteur()
+				{
+					var divSelection = document.getElementById("dropDownSelection").value;
+					
+					if (divSelection =="0")
+					{
+						document.getElementById("residential").style.display = 'none';
+						document.getElementById("comercial").style.display = 'none';
+						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("productline").style.display = 'none';
+					}	
+					else if (divSelection =="1")
+					{
+						document.getElementById("residential").style.display = 'inline';
+						document.getElementById("comercial").style.display = 'none';
+						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("productline").style.display = 'inline';
+					}
+					else if (divSelection =="2")
+					{
+						document.getElementById("residential").style.display = 'none';
+						document.getElementById("comercial").style.display = 'inline';
+						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("productline").style.display = 'inline';
+					}
+					else if (divSelection =="3")
+					{
+						document.getElementById("residential").style.display = 'none';
+						document.getElementById("comercial").style.display = 'none';
+						document.getElementById("corporate").style.display = 'inline';
+						document.getElementById("productline").style.display = 'inline';
+					}
 
 
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Basement </label>
+					else if (divSelection =="4")
+					{
+						document.getElementById("residential").style.display = 'none';
+						document.getElementById("comercial").style.display = 'none';
+						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("productline").style.display = 'inline';
+						document.getElementById("hybrid").style.display = 'inline';
+					}
 
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number ParkingSpaces </label>
+				}
 
-                    <input type="text" id="numberid" placeholder="6" required="required" number="number"/>
-                    <label for="number">Number Occupants </label>
+				function calculateTotal()
+				{					
+					document.getElementById("divResult").style.display = 'inline';
+					var rdtSelection = document.getElementsByName('box2');
+					var rangeElevator = 0;
+					var resultPartial = 0;
+					var resultTotal = 0;
+					var unitCost = 0;	
+					var unitCostInst = 0;	
 
-                </div>
-            </div>
+					var divSelection = document.getElementById("dropDownSelection").value;
+					
+					if (divSelection =="0")
+					{
+						rangeElevator = 0;	
+					}	
+					else if (divSelection =="1")
+					{
+						rangeElevator = document.getElementsByName('output1')[0].value;	
+					}
+					else if (divSelection =="2")
+					{
+						rangeElevator = document.getElementsByName('output2')[0].value;	
+					}
+					else if (divSelection =="3")
+					{
+						rangeElevator = document.getElementsByName('output3')[0].value;	
+					}
+
+					else if (divSelection =="4")
+					{
+						rangeElevator = document.getElementsByName('output3')[0].value;	
+					}
 
 
+						
+					if (rdtSelection[0].checked)
+					{
+						unitCost = 7565;
+						unitCostInst = 0.10;												
+					}	
+					else if (rdtSelection[1].checked)
+					{
+						unitCost = 12345;
+						unitCostInst = 0.13;																
+					}	
+					else if (rdtSelection[2].checked)
+					{
+						unitCost = 15400;
+						unitCostInst = 0.16;																			
+					}
+					resultPartial = unitCost * rangeElevator;
+					resultTotal = resultPartial + (resultPartial*unitCostInst);
+					resultTotal = "$ " + (resultTotal).formatMoney(2, ".", ",");
+
+					document.getElementsByName('output6')[0].value= resultTotal;
+				
+				}
+
+				function calculateQuoteResidential()
+				{
+					var rdtSelection = document.getElementsByName('box2');
+					var nbApart = document.getElementById("nbApartament").value;
+					var nbFlo = document.getElementById("nbFloors").value;
+					var nbBase = document.getElementById("nbBasement").value;
+					
+					var avgDoorPerFloow = nbApart / (nbFlo - nbBase);
+					if (avgDoorPerFloow /= 20)
+					{
+						
+					}
+					var estiResid = avgDoorPerFloow/6;
+					var colResid = nbFlo/20;
+					
+					var resultQuote = (Math.round(colResid * estiResid));
+					document.getElementsByName('output1')[0].value= resultQuote;
+
+					if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
+					{
+						calculateTotal();
+					}
+				}
+
+					function calculateQuoteCommercial()
+					{
+						var rdtSelection = document.getElementsByName('box2');
+						var nbCageDeployed = document.getElementById("noCage").value;
+											
+						var resultQuote = nbCageDeployed;
+						document.getElementsByName('output2')[0].value= resultQuote;
+						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
+						{
+							calculateTotal();
+						}
+					}
+					
+					function calculateQuoteCorporate()
+					{
+						var rdtSelection = document.getElementsByName('box2');
+						var nrFloorsCo = document.getElementById("nrFloorsContained").value;
+						var nrBasement = document.getElementById("nrBasement").value;
+						var nrOccupFloors = document.getElementById("nrOccupantsFloors").value;
+					
+		
+						var totalNrOccupants = nrOccupFloors * (nrFloorsCo * nrBasement);
+						var nrElevReq = totalNrOccupants/1000;
+						var nrElevColReq = nrBasement/20;
+						var nrElevPerCol = nrElevReq/nrElevColReq;
+						
+						var resultQuote = (Math.round(nrElevPerCol * nrElevColReq));
+						document.getElementsByName('output3')[0].value= resultQuote;
+						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
+						{
+							calculateTotal();
+						}
+								
+					}
+
+					function ShowHideDiv() 
+					{
+						document.getElementById("divResult").style.display = 'inline';
+						var rdtSelection = document.getElementsByName('box2');
+						var resultPrice = 0;
+						var resultPerce = 0;
+						
+						if (rdtSelection[0].checked)
+						{
+							resultPrice = "$7565.00";
+							resultPerce = "10%";
+						}	
+						else if (rdtSelection[1].checked)
+						{
+							resultPrice = "$12345.00";
+							resultPerce = "13%";
+						}	
+						else if (rdtSelection[2].checked)
+						{
+							resultPrice = "$15400.00";
+							resultPerce = "16%";
+						}
+
+						document.getElementsByName('output4')[0].value= resultPrice;
+						document.getElementsByName('output5')[0].value= resultPerce;
+						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
+						{
+							calculateTotal();
+						}
+    				}
+
+
+
+					function displayData()
+					{
+						var data=['Product Line'];
+						var output="";
+						var output2="";
+						var dataList;
+						
+						for(var i=0; i< data.length; i++)
+						{
+							dataList=data[i];
+							//output+= '<input type="label" value='+dataList+' name="box2">'  + '   ' + dataList+'   '+'<br><br>';
+							output+= '<label>'  + '   ' + dataList+'   '+'</label><br><br>';
+							output2+= 'Standard:<input type="radio" value="1" name="box2" onclick="ShowHideDiv()">  '+'  Premium:<input type="radio" value="2" name="box2" onclick="ShowHideDiv()">  '+'  Excelium:<input type="radio" value="3" name="box2" onclick="ShowHideDiv()">'+'<br><br>';
+							document.getElementById("dataList").innerHTML=output;
+							document.getElementById("radioBtn").innerHTML=output2;
+						}
+					}
+								
+
+
+			</script>
+
+			<!-- /START SCRIP -->
+			<Table border="10" width=100%>
+				<tr>
+					<td colspan="2">
+						<div class="col-md-4">
+							<label for="contact_department">Department</label>
+							<select class="form-control pointer" id="dropDownSelection" onchange="displayDivSelecteur()">
+								<option value="0">--- Select ---</option>
+								<option value="1">RESIDENTIAL</option>
+								<option value="2">COMMERCIAL</option>
+								<option value="3">CORPORATE</option>
+								<option value="4">HYBRID</option>
+							</select>
+						</div>
+
+						<br>
+						<br> 
+
+					</td>		
+				</tr>
+				<tr>
+					<td>
+						<div class="row">
+							<div id="quote" class="col-md-4">					
+				
+								<div id="residential" class="col-md-4"  style="display:none">
+									<h2>RESIDENTIAL</h2>
+
+									<label for="number">Number Apartament</label>
+									<input type="text" id="nbApartament" placeholder="10" required="required" number="number"/> 
+									
+									<label for="number">Number Floors</label>
+									<input type="text" id="nbFloors" placeholder="20" required="required" number="number"/>
+									
+									<label for="number">Number Basement</label>
+									<input type="text" id="nbBasement" placeholder="6" required="required" number="number"/>
+
+									<br>
+									<br> 
+
+									<p class="btn btn-blue" href="#" onclick="calculateQuoteResidential();" >Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<br>
+									<label for="number">NumberElevator :</label>
+									<input type="text" id="idResult" name="output1" disabled/>
+									<br> 
+									
+								</div>
+					
+				
+								<div id="comercial"  class="col-md-4" style="display:none">
+									<h2>COMERCIAL</h2>
+									<label for="number">Number Distinct</label>
+									<input type="text" id="noDistinct" placeholder="6" required="required" number="number"/>
+								
+									<label for="number">Number Floors</label>
+									<input type="text" id="noFloors" placeholder="20" required="required" number="number"/>
+									
+									<label for="number">Number Basement </label>
+									<input type="text" id="noBasement" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number Parking </label>
+									<input type="text" id="noParking" placeholder="6" required="required" number="number"/>
+								
+									<label for="number">Number Elevator</label>
+									<input type="text" id="noElevator" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number Cage</label>
+									<input type="text" id="noCage" placeholder="6" required="required" number="number"/>
+								
+									<br>
+									<br>
+									
+									<p class="btn btn-blue" href="#" onclick="calculateQuoteCommercial();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<br>
+									
+									<label for="number">NumberElevator :</label>
+									<input type="text" id="idResult" name="output2" disabled/>
+									<br> 		 
+									
+								</div>
+										
+
+								<div id="corporate" class="col-md-4" style="display:none">
+									<h2>CORPORATE</h2>
+									<label for="number">Number Separate</label>
+									<input type="text" id="nrSeparate" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number FloorsContained</label>
+									<input type="text" id="nrFloorsContained" placeholder="20" required="required" number="number"/>
+									
+
+									<label for="number">Number Basement </label>
+									<input type="text" id="nrBasement" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number ParkingSpaces </label>
+									<input type="text" id="nrParkingSpaces" placeholder="6" required="required" number="number"/>
+								
+									<label for="number">Number Occupants </label>
+									<input type="text" id="nrOccupantsFloors" placeholder="6" required="required" number="number"/>
+								<br>
+								<br>
+
+									<p class="btn btn-blue" href="#" onclick="calculateQuoteCorporate();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<br>
+									<label for="number">>NumberElevator :</label>
+									<input type="text" id="idResult" name="output3" disabled/>
+									<br>
+
+								</div>
+
+
+								<div id="hybrid" class="col-md-4" style="display:none">
+									<h2>HYBRID</h2>
+									<label for="number">Distinct</label>
+									<input type="text" id="hdistinct" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number FloorsContained</label>
+									<input type="text" id="hFloorsContained" placeholder="20" required="required" number="number"/>
+									
+
+									<label for="number">Number Basement </label>
+									<input type="text" id="hBasement" placeholder="6" required="required" number="number"/>
+									
+									<label for="number">Number ParkingSpaces </label>
+									<input type="text" id="hParkingSpaces" placeholder="6" required="required" number="number"/>
+								
+									<label for="number">Number Occupants </label>
+									<input type="text" id="hOccupantsFloors" placeholder="6" required="required" number="number"/>
+
+
+									<label for="number">Hours of Activity</label>
+									<input type="text" id="hOccupantsFloors" placeholder="6" required="required" number="number"/>
+
+
+									<br>
+									<br>
+									<p class="btn btn-blue" href="#"onclick="calculateQuoteHybrid();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<br>
+									<label for="number">NumberElevator :</label>
+									<input type="text" id="idResult" name="output3" disabled/>
+									<br>
+
+			 				    </div>
+							</div>		
+						</div>
+					</td>
+					<td>
+						<body onload="displayData()">
+							<div id="productline" class="col-md-4" style="display:none"> 
+								<div class="col-sm-4"><div id="dataList"></div></div>
+								<div class="col-sm-4"><div id="radioBtn"></div></div>
+								<div class="col-sm-4">
+									<div id="divResult" style="display:none">
+										<label for="number">Price for elevator :</label>
+										<input type="text" id="idResult" name="output4" disabled/>
+
+										<label for="number">Percentage returned by service :</label>
+										<input type="text" id="idResult" name="output5" disabled/>
+
+										<label for="number">Estimated cost of installation :</label>
+										<input type="text" id="idResult" name="output6" disabled/>
+									</div>
+								</div>
+							</div>
+					</body>
+					</td>
+				</tr>
+			</Table>
+   	
+				
+
+				   
+					<!--	<img src="demo_files/images/elevator/téléchargement.png" alt="change this years" width="500" height="200"><br>   --> 
+				
+
+
+			
             <!-- FOOTER -->
             <footer id="footer">
                 <div class="container">
