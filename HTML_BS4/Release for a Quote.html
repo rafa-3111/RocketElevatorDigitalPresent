@@ -229,6 +229,9 @@
 
 				function displayDivSelecteur()
 				{
+					var resultTotal = "$ " + (0).formatMoney(2, ".", ",");
+					document.getElementsByName('output6')[0].value= resultTotal;
+
 					var divSelection = document.getElementById("dropDownSelection").value;
 					
 					if (divSelection =="0")
@@ -236,6 +239,7 @@
 						document.getElementById("residential").style.display = 'none';
 						document.getElementById("comercial").style.display = 'none';
 						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("hybrid").style.display = 'none';
 						document.getElementById("productline").style.display = 'none';
 					}	
 					else if (divSelection =="1")
@@ -243,6 +247,7 @@
 						document.getElementById("residential").style.display = 'inline';
 						document.getElementById("comercial").style.display = 'none';
 						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("hybrid").style.display = 'none';
 						document.getElementById("productline").style.display = 'inline';
 					}
 					else if (divSelection =="2")
@@ -250,6 +255,7 @@
 						document.getElementById("residential").style.display = 'none';
 						document.getElementById("comercial").style.display = 'inline';
 						document.getElementById("corporate").style.display = 'none';
+						document.getElementById("hybrid").style.display = 'none';
 						document.getElementById("productline").style.display = 'inline';
 					}
 					else if (divSelection =="3")
@@ -257,17 +263,18 @@
 						document.getElementById("residential").style.display = 'none';
 						document.getElementById("comercial").style.display = 'none';
 						document.getElementById("corporate").style.display = 'inline';
+						document.getElementById("hybrid").style.display = 'none';
 						document.getElementById("productline").style.display = 'inline';
+					
 					}
-
-
 					else if (divSelection =="4")
 					{
 						document.getElementById("residential").style.display = 'none';
 						document.getElementById("comercial").style.display = 'none';
 						document.getElementById("corporate").style.display = 'none';
-						document.getElementById("productline").style.display = 'inline';
 						document.getElementById("hybrid").style.display = 'inline';
+						document.getElementById("productline").style.display = 'inline';
+					
 					}
 
 				}
@@ -333,20 +340,26 @@
 
 				function calculateQuoteResidential()
 				{
+					var colResid = 0;
+					var resultQuote = 0;
 					var rdtSelection = document.getElementsByName('box2');
 					var nbApart = document.getElementById("nbApartament").value;
 					var nbFlo = document.getElementById("nbFloors").value;
 					var nbBase = document.getElementById("nbBasement").value;
 					
-					var avgDoorPerFloow = nbApart / (nbFlo - nbBase);
-					if (avgDoorPerFloow /= 20)
-					{
-						
-					}
-					var estiResid = avgDoorPerFloow/6;
-					var colResid = nbFlo/20;
+					var avgDoorPerFloow = (Math.ceil(nbApart / (nbFlo - nbBase)));
+					var estiResid = (Math.ceil(avgDoorPerFloow/6));									
 					
-					var resultQuote = (Math.round(colResid * estiResid));
+					
+					if (nbFlo > 20)
+					{
+						colResid = (Math.ceil(nbFlo/20));
+						resultQuote = (Math.ceil(colResid * estiResid));
+					}
+					else
+					{
+						resultQuote = estiResid;
+					}
 					document.getElementsByName('output1')[0].value= resultQuote;
 
 					if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
@@ -389,6 +402,30 @@
 						}
 								
 					}
+
+
+					function calculateQuoteHybrid()
+					{
+						var rdtSelection = document.getElementsByName('box2');
+						var nrFloorsCo = document.getElementById("nrFloorsContained").value;
+						var nrBasement = document.getElementById("nrBasement").value;
+						var nrOccupFloors = document.getElementById("nrOccupantsFloors").value;
+					
+		
+						var totalNrOccupants = nrOccupFloors * (nrFloorsCo * nrBasement);
+						var nrElevReq = totalNrOccupants/1000;
+						var nrElevColReq = nrBasement/20;
+						var nrElevPerCol = nrElevReq/nrElevColReq;
+						
+						var resultQuote = (Math.ceil(nrElevPerCol * nrElevColReq));
+						document.getElementsByName('output4')[0].value= resultQuote;
+						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
+						{
+							calculateTotal();
+						}
+								
+					}
+
 
 					function ShowHideDiv() 
 					{
@@ -584,7 +621,7 @@
 									<p class="btn btn-blue" href="#"onclick="calculateQuoteHybrid();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
 									<br>
 									<label for="number">NumberElevator :</label>
-									<input type="text" id="idResult" name="output3" disabled/>
+									<input type="text" id="idResult" name="output4" disabled/>
 									<br>
 
 			 				    </div>
