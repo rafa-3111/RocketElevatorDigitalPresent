@@ -1,4 +1,4 @@
-function displayDivSelecteur()
+                function displayDivSelecteur()
 				{
 					var resultTotal = "$ " + (0).formatMoney(2, ".", ",");
 					document.getElementsByName('output6')[0].value= resultTotal;
