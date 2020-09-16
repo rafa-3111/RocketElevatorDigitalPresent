@@ -26,7 +26,7 @@
 
 		<!-- PAGE LEVEL SCRIPTS -->
 		<link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/color_scheme/bleu.css" rel="stylesheet" type="text/css" id="color_scheme" />
+
     
     
 	</head>
@@ -62,9 +62,14 @@
             }
             
             body {
-                background-color: rgb(131, 160, 161);
+                
+				background-color:lightslategray;
             }
             
+			div {
+
+				color:mediumblue;
+			}
 
         </style>
 
@@ -180,27 +185,27 @@
 								-->
 								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
 									<li class="active"><!-- HOME -->
-										<a href="#home">
+										<a href="index.html">
 										<em> HOME</em>	
 										</a>
 									</li>
 									<li><!-- SERVICES -->
-										<a href="#services">
+										<a href="rocket_residential.html">
 										<em>SERVICES</em>	
 										</a>
 									</li>
 									<li><!-- WORK -->
-										<a href="#work">
+										<a href="rocket_comercialandcorporate.html">
 											<em>PORTOFOLIO</em>
 										</a>
 									</li>
 									<li><!-- NEWS -->
-										<a href="#news">
+										<a href="index.html">
 											<em>NEWS</em>
 										</a>
 									</li>					
 									<li><!-- CLIENTS -->
-										<a href="#clients">
+										<a href="index.html">
 											<em>CLIENTS</em>
 										</a>
 									</li>
@@ -223,262 +228,7 @@
             <img src="demo_files/images/elevator/dSPzkid_-_Imgur.gif" alt="img"  width="1800" height="500"/>
 	  
 			<!-- START SCRIP -->
-			<script>
-				
-				
-
-				function displayDivSelecteur()
-				{
-					var resultTotal = "$ " + (0).formatMoney(2, ".", ",");
-					document.getElementsByName('output6')[0].value= resultTotal;
-
-					var divSelection = document.getElementById("dropDownSelection").value;
-					
-					if (divSelection =="0")
-					{
-						document.getElementById("residential").style.display = 'none';
-						document.getElementById("comercial").style.display = 'none';
-						document.getElementById("corporate").style.display = 'none';
-						document.getElementById("hybrid").style.display = 'none';
-						document.getElementById("productline").style.display = 'none';
-					}	
-					else if (divSelection =="1")
-					{
-						document.getElementById("residential").style.display = 'inline';
-						document.getElementById("comercial").style.display = 'none';
-						document.getElementById("corporate").style.display = 'none';
-						document.getElementById("hybrid").style.display = 'none';
-						document.getElementById("productline").style.display = 'inline';
-					}
-					else if (divSelection =="2")
-					{
-						document.getElementById("residential").style.display = 'none';
-						document.getElementById("comercial").style.display = 'inline';
-						document.getElementById("corporate").style.display = 'none';
-						document.getElementById("hybrid").style.display = 'none';
-						document.getElementById("productline").style.display = 'inline';
-					}
-					else if (divSelection =="3")
-					{
-						document.getElementById("residential").style.display = 'none';
-						document.getElementById("comercial").style.display = 'none';
-						document.getElementById("corporate").style.display = 'inline';
-						document.getElementById("hybrid").style.display = 'none';
-						document.getElementById("productline").style.display = 'inline';
-					
-					}
-					else if (divSelection =="4")
-					{
-						document.getElementById("residential").style.display = 'none';
-						document.getElementById("comercial").style.display = 'none';
-						document.getElementById("corporate").style.display = 'none';
-						document.getElementById("hybrid").style.display = 'inline';
-						document.getElementById("productline").style.display = 'inline';
-					
-					}
-
-				}
-
-				function calculateTotal()
-				{					
-					document.getElementById("divResult").style.display = 'inline';
-					var rdtSelection = document.getElementsByName('box2');
-					var rangeElevator = 0;
-					var resultPartial = 0;
-					var resultTotal = 0;
-					var unitCost = 0;	
-					var unitCostInst = 0;	
-
-					var divSelection = document.getElementById("dropDownSelection").value;
-					
-					if (divSelection =="0")
-					{
-						rangeElevator = 0;	
-					}	
-					else if (divSelection =="1")
-					{
-						rangeElevator = document.getElementsByName('output1')[0].value;	
-					}
-					else if (divSelection =="2")
-					{
-						rangeElevator = document.getElementsByName('output2')[0].value;	
-					}
-					else if (divSelection =="3")
-					{
-						rangeElevator = document.getElementsByName('output3')[0].value;	
-					}
-
-					else if (divSelection =="4")
-					{
-						rangeElevator = document.getElementsByName('output3')[0].value;	
-					}
-
-
-						
-					if (rdtSelection[0].checked)
-					{
-						unitCost = 7565;
-						unitCostInst = 0.10;												
-					}	
-					else if (rdtSelection[1].checked)
-					{
-						unitCost = 12345;
-						unitCostInst = 0.13;																
-					}	
-					else if (rdtSelection[2].checked)
-					{
-						unitCost = 15400;
-						unitCostInst = 0.16;																			
-					}
-					resultPartial = unitCost * rangeElevator;
-					resultTotal = resultPartial + (resultPartial*unitCostInst);
-					resultTotal = "$ " + (resultTotal).formatMoney(2, ".", ",");
-
-					document.getElementsByName('output6')[0].value= resultTotal;
-				
-				}
-
-				function calculateQuoteResidential()
-				{
-					var colResid = 0;
-					var resultQuote = 0;
-					var rdtSelection = document.getElementsByName('box2');
-					var nbApart = document.getElementById("nbApartament").value;
-					var nbFlo = document.getElementById("nbFloors").value;
-					var nbBase = document.getElementById("nbBasement").value;
-					
-					var avgDoorPerFloow = (Math.ceil(nbApart / (nbFlo - nbBase)));
-					var estiResid = (Math.ceil(avgDoorPerFloow/6));									
-					
-					
-					if (nbFlo > 20)
-					{
-						colResid = (Math.ceil(nbFlo/20));
-						resultQuote = (Math.ceil(colResid * estiResid));
-					}
-					else
-					{
-						resultQuote = estiResid;
-					}
-					document.getElementsByName('output1')[0].value= resultQuote;
-
-					if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
-					{
-						calculateTotal();
-					}
-				}
-
-					function calculateQuoteCommercial()
-					{
-						var rdtSelection = document.getElementsByName('box2');
-						var nbCageDeployed = document.getElementById("noCage").value;
-											
-						var resultQuote = nbCageDeployed;
-						document.getElementsByName('output2')[0].value= resultQuote;
-						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
-						{
-							calculateTotal();
-						}
-					}
-					
-					function calculateQuoteCorporate()
-					{
-						var rdtSelection = document.getElementsByName('box2');
-						var nrFloorsCo = document.getElementById("nrFloorsContained").value;
-						var nrBasement = document.getElementById("nrBasement").value;
-						var nrOccupFloors = document.getElementById("nrOccupantsFloors").value;
-					
-		
-						var totalNrOccupants = nrOccupFloors * (nrFloorsCo * nrBasement);
-						var nrElevReq = totalNrOccupants/1000;
-						var nrElevColReq = nrBasement/20;
-						var nrElevPerCol = nrElevReq/nrElevColReq;
-						
-						var resultQuote = (Math.round(nrElevPerCol * nrElevColReq));
-						document.getElementsByName('output3')[0].value= resultQuote;
-						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
-						{
-							calculateTotal();
-						}
-								
-					}
-
-
-					function calculateQuoteHybrid()
-					{
-						var rdtSelection = document.getElementsByName('box2');
-						var nrFloorsCo = document.getElementById("nrFloorsContained").value;
-						var nrBasement = document.getElementById("nrBasement").value;
-						var nrOccupFloors = document.getElementById("nrOccupantsFloors").value;
-					
-		
-						var totalNrOccupants = nrOccupFloors * (nrFloorsCo * nrBasement);
-						var nrElevReq = totalNrOccupants/1000;
-						var nrElevColReq = nrBasement/20;
-						var nrElevPerCol = nrElevReq/nrElevColReq;
-						
-						var resultQuote = (Math.ceil(nrElevPerCol * nrElevColReq));
-						document.getElementsByName('output4')[0].value= resultQuote;
-						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
-						{
-							calculateTotal();
-						}
-								
-					}
-
-
-					function ShowHideDiv() 
-					{
-						document.getElementById("divResult").style.display = 'inline';
-						var rdtSelection = document.getElementsByName('box2');
-						var resultPrice = 0;
-						var resultPerce = 0;
-						
-						if (rdtSelection[0].checked)
-						{
-							resultPrice = "$7565.00";
-							resultPerce = "10%";
-						}	
-						else if (rdtSelection[1].checked)
-						{
-							resultPrice = "$12345.00";
-							resultPerce = "13%";
-						}	
-						else if (rdtSelection[2].checked)
-						{
-							resultPrice = "$15400.00";
-							resultPerce = "16%";
-						}
-
-						document.getElementsByName('output4')[0].value= resultPrice;
-						document.getElementsByName('output5')[0].value= resultPerce;
-						if (rdtSelection[0].checked || rdtSelection[1].checked || rdtSelection[2].checked) 
-						{
-							calculateTotal();
-						}
-    				}
-
-
-
-					function displayData()
-					{
-						var data=['Product Line'];
-						var output="";
-						var output2="";
-						var dataList;
-						
-						for(var i=0; i< data.length; i++)
-						{
-							dataList=data[i];
-							//output+= '<input type="label" value='+dataList+' name="box2">'  + '   ' + dataList+'   '+'<br><br>';
-							output+= '<label>'  + '   ' + dataList+'   '+'</label><br><br>';
-							output2+= 'Standard:<input type="radio" value="1" name="box2" onclick="ShowHideDiv()">  '+'  Premium:<input type="radio" value="2" name="box2" onclick="ShowHideDiv()">  '+'  Excelium:<input type="radio" value="3" name="box2" onclick="ShowHideDiv()">'+'<br><br>';
-							document.getElementById("dataList").innerHTML=output;
-							document.getElementById("radioBtn").innerHTML=output2;
-						}
-					}
-								
-
+			<script src="js/jsFunctions_Rocket.js">
 
 			</script>
 
@@ -496,10 +246,9 @@
 								<option value="4">HYBRID</option>
 							</select>
 						</div>
-
 						<br>
 						<br> 
-
+						<label id="idMessage01" class="color: red;"></label>
 					</td>		
 				</tr>
 				<tr>
@@ -508,23 +257,25 @@
 							<div id="quote" class="col-md-4">					
 				
 								<div id="residential" class="col-md-4"  style="display:none">
-									<h2>RESIDENTIAL</h2>
+									<h2>RESIDENTIAL</h2>		
+									
+										
 
-									<label for="number">Number Apartament</label>
-									<input type="text" id="nbApartament" placeholder="10" required="required" number="number"/> 
+									<label for="number">Number Apartament</label>	
+									<input type="text" id="nbApartament" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/> 
 									
-									<label for="number">Number Floors</label>
-									<input type="text" id="nbFloors" placeholder="20" required="required" number="number"/>
+									<label for="number">Number Floors</label>	
+									<input type="text" id="nbFloors" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
-									<label for="number">Number Basement</label>
-									<input type="text" id="nbBasement" placeholder="6" required="required" number="number"/>
+									<label for="number">Number Basement</label>	
+									<input type="text" id="nbBasement" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 
 									<br>
 									<br> 
 
 									<p class="btn btn-blue" href="#" onclick="calculateQuoteResidential();" >Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
 									<br>
-									<label for="number">NumberElevator :</label>
+									<label for="number">NumberElevator :</label>	
 									<input type="text" id="idResult" name="output1" disabled/>
 									<br> 
 									
@@ -534,27 +285,29 @@
 								<div id="comercial"  class="col-md-4" style="display:none">
 									<h2>COMERCIAL</h2>
 									<label for="number">Number Distinct</label>
-									<input type="text" id="noDistinct" placeholder="6" required="required" number="number"/>
+									<input type="text" id="noDistinct" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 								
 									<label for="number">Number Floors</label>
-									<input type="text" id="noFloors" placeholder="20" required="required" number="number"/>
+									<input type="text" id="noFloors" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number Basement </label>
-									<input type="text" id="noBasement" placeholder="6" required="required" number="number"/>
+									<input type="text" id="noBasement" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number Parking </label>
-									<input type="text" id="noParking" placeholder="6" required="required" number="number"/>
+									<input type="text" id="noParking" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 								
 									<label for="number">Number Elevator</label>
-									<input type="text" id="noElevator" placeholder="6" required="required" number="number"/>
+									<input type="text" id="noElevator" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number Cage</label>
-									<input type="text" id="noCage" placeholder="6" required="required" number="number"/>
-								
+									<input type="text" id="noCage" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
+	
 									<br>
 									<br>
 									
 									<p class="btn btn-blue" href="#" onclick="calculateQuoteCommercial();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<label id="idMessage02" class"color: red;"></label>
+									
 									<br>
 									
 									<label for="number">NumberElevator :</label>
@@ -566,23 +319,24 @@
 
 								<div id="corporate" class="col-md-4" style="display:none">
 									<h2>CORPORATE</h2>
-									<label for="number">Number Separate</label>
-									<input type="text" id="nrSeparate" placeholder="6" required="required" number="number"/>
+									<label for="number">Number Companie</label>
+									<input type="text" id="nrSeparate" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number FloorsContained</label>
-									<input type="text" id="nrFloorsContained" placeholder="20" required="required" number="number"/>
+									<input type="text" id="nrFloorsContained" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
-
 									<label for="number">Number Basement </label>
-									<input type="text" id="nrBasement" placeholder="6" required="required" number="number"/>
+									<input type="text" id="nrBasement" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number ParkingSpaces </label>
-									<input type="text" id="nrParkingSpaces" placeholder="6" required="required" number="number"/>
+									<input type="text" id="nrParkingSpaces"onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 								
 									<label for="number">Number Occupants </label>
-									<input type="text" id="nrOccupantsFloors" placeholder="6" required="required" number="number"/>
-								<br>
-								<br>
+									<input type="text" id="nrOccupantsFloors" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
+
+									
+									<br>
+									<br>
 
 									<p class="btn btn-blue" href="#" onclick="calculateQuoteCorporate();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
 									<br>
@@ -596,32 +350,32 @@
 								<div id="hybrid" class="col-md-4" style="display:none">
 									<h2>HYBRID</h2>
 									<label for="number">Distinct</label>
-									<input type="text" id="hdistinct" placeholder="6" required="required" number="number"/>
+									<input type="text" id="hdistinct" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number FloorsContained</label>
-									<input type="text" id="hFloorsContained" placeholder="20" required="required" number="number"/>
+									<input type="text" id="hFloorsContained"onkeypress="return isNumberKey(event)"  placeholder="" required="required" number="number"/>
 									
 
 									<label for="number">Number Basement </label>
-									<input type="text" id="hBasement" placeholder="6" required="required" number="number"/>
+									<input type="text" id="hBasement" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 									
 									<label for="number">Number ParkingSpaces </label>
-									<input type="text" id="hParkingSpaces" placeholder="6" required="required" number="number"/>
+									<input type="text" id="hParkingSpaces" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 								
 									<label for="number">Number Occupants </label>
-									<input type="text" id="hOccupantsFloors" placeholder="6" required="required" number="number"/>
+									<input type="text" id="hOccupantsFloors" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 
 
 									<label for="number">Hours of Activity</label>
-									<input type="text" id="hOccupantsFloors" placeholder="6" required="required" number="number"/>
+									<input type="text" id="hHoursofActivity" onkeypress="return isNumberKey(event)" placeholder="" required="required" number="number"/>
 
 
 									<br>
 									<br>
-									<p class="btn btn-blue" href="#"onclick="calculateQuoteHybrid();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
+									<p class="btn btn-blue" href="#" onclick="calculateQuoteHybrid();">Calculated &nbsp; <i class="fa fa-angle-right"></i></p>
 									<br>
 									<label for="number">NumberElevator :</label>
-									<input type="text" id="idResult" name="output3" disabled/>
+									<input type="text" id="idResult" name="output4" disabled/>
 									<br>
 
 			 				    </div>
@@ -629,22 +383,27 @@
 						</div>
 					</td>
 					<td>
-						<body onload="displayData()">
-							<div id="productline" class="col-md-4" style="display:none"> 
+						<body onload="displayData()">   
+						
+							<img src="demo_files/images/imgRocket/R2.png" alt="central" wight ="300" height="100" >
+							<div id="productline" class="col-md-4" style="display:none">
 								<div class="col-sm-4"><div id="dataList"></div></div>
 								<div class="col-sm-4"><div id="radioBtn"></div></div>
 								<div class="col-sm-4">
+								<!--    <img src="demo_files/images/imgRocket/R2.png" alt="central" wight ="600" height="400" left="300" right="300">-->
+								
 									<div id="divResult" style="display:none">
 										<label for="number">Price for elevator :</label>
-										<input type="text" id="idResult" name="output4" disabled/>
-
-										<label for="number">Percentage returned by service :</label>
 										<input type="text" id="idResult" name="output5" disabled/>
 
-										<label for="number">Estimated cost of installation :</label>
+										<label for="number">Percentage returned by service :</label>
 										<input type="text" id="idResult" name="output6" disabled/>
+
+										<label for="number">Estimated cost of installation :</label>
+										<input type="text" id="idResult" name="output7" disabled/>
 									</div>
 								</div>
+														
 							</div>
 					</body>
 					</td>
@@ -652,9 +411,184 @@
 			</Table>
    	
 				
+			<!-- CONTACT -->
+			<section id="contact">
+				<div class="container">
+						<header class="text-center mb-60">
+						<h2>Contact Us</h2>
+						<p class="lead font-lato">Call Rocket Elevator Assets</p>
+						<hr />
+					</header>
+
+
+					<div class="row">
+
+						<!-- FORM -->
+						<div class="col-md-8 col-sm-8">
+
+							<h3>Drop us a line or just say <strong><em>Hello!</em></strong></h3>
+
+							
+							<!--
+								MESSAGES
+								
+									How it works?
+									The form data is posted to php/contact.php where the fields are verified!
+									php.contact.php will redirect back here and will add a hash to the end of the URL:
+										#alert_success 		= email sent
+										#alert_failed		= email not sent - internal server error (404 error or SMTP problem)
+										#alert_mandatory	= email not sent - required fields empty
+										Hashes are handled by assets/js/contact.js
+
+									Form data: required to be an array. Example:
+										contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
+										Also, add `required` to input fields if is a mandatory field. 
+										Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
+
+									PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
+												 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
+
+									WARNING! Do not change the `email` and `name`!
+												contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+												contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+							-->
+
+							<!-- Alert Success -->
+							<div id="alert_success" class="alert alert-success mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Thank You!</strong> Your message successfully sent!
+							</div><!-- /Alert Success -->
+
+
+							<!-- Alert Failed -->
+							<div id="alert_failed" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>[SMTP] Error!</strong> Internal server error!
+							</div><!-- /Alert Failed -->
+
+
+							<!-- Alert Mandatory -->
+							<div id="alert_mandatory" class="alert alert-danger mb-30">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+							</div><!-- /Alert Mandatory -->
+
+
+							<form action="php/contact.php" method="post" enctype="multipart/form-data">
+								<fieldset>
+									<input type="hidden" name="action" value="contact_send" />
+
+									<div class="row">
+											<div class="col-md-4">
+												<label for="contact:name">Full Name *</label>
+												<input required type="text" value="" class="form-control" name="contact[name][required]" id="contact:name">
+											</div>
+											<div class="col-md-4">
+												<label for="contact:name">Business Name *</label>
+												<input required type="text" value="" class="form-control" name="contact[name][required]" id="contact:name">
+											</div>
+
+
+											<div class="col-md-4">
+												<label for="contact:email">E-mail Address *</label>
+												<input required type="email" value="" class="form-control" name="contact[email][required]" id="contact:email">
+											</div>
+											<div class="col-md-4">
+												<label for="contact:phone">Phone Number*</label>
+												<input type="text" value="" class="form-control" name="contact[phone]" id="contact:phone">
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-md-8">
+												<label for="contact:subject">Project Name*</label>
+												<input required type="text" value="" class="form-control" name="contact[subject][required]" id="contact:subject">
+											</div>
+
+											<div class="col-md-8">
+												<label for="contact:subject">Project Description*</label>
+												<input required type="text" value="" class="form-control" name="contact[subject][required]" id="contact:subject">
+											</div>
+											<div class="col-md-4">
+												<label for="contact_department">Department</label>
+												<select class="form-control pointer" name="contact[department]">
+													<option value="">--- Select ---</option>
+													<option value="Marketing">Marketing</option>
+													<option value="Webdesign">Webdesign</option>
+													<option value="Architecture">Architecture</option>
+												</select>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-md-12">
+												<label for="contact:message">Message *</label>
+												<textarea required maxlength="10000" rows="8" class="form-control" name="contact[message]" id="contact:message"></textarea>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-md-12">
+												<label for="contact:attachment">File Attachment</label>
+
+												<!-- custom file upload -->
+												<input class="custom-file-upload" type="file" id="file" name="contact[attachment]" id="contact:attachment" data-btn-text="Select a File" />
+												<small class="text-muted block">Max file size: 10Mb (zip/pdf/jpg/png)</small>
+
+											</div>
+									</div>
+
+								</fieldset>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> SEND MESSAGE</button>
+									</div>
+								</div>
+							</form>
+
+						</div>
+						<!-- /FORM -->
+
+
+						<!-- INFO -->
+						<div class="col-md-4 col-sm-4">
+
+							<h2>Visit Us</h2>
+
+							<!-- 
+							Available heights
+								h-100
+								h-150
+								h-200
+								h-250
+								h-300
+								h-350
+								h-400
+								h-450
+								h-500
+								h-550
+								h-600
+							-->
+							
+							<div id="map2" ><div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=725%20boulevard%20lebourgneuf.Quebec&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/nordvpn-coupon/"></a></div><style>.mapouter{position:relative;text-align:right;height:300px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:500px;}</style></div>
+
+							<hr />
+
+							<p>
+								<span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> 725,Boulevard Lebourneuf,Quebec</span>
+								<span class="block"><strong><i class="fa fa-phone"></i> Phone:</strong> <a href="tel:1800-555-1234">1800-555-1234</a></span>
+								<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="https://codeboxx.biz">https://codeboxx.biz</a></span>
+							</p>
+
+						</div>
+						<!-- /INFO -->
+
+					</div>
+
+				</div>
+			</section>
+			<!-- /CONTACT -->
 
 				   
-					<!--	<img src="demo_files/images/elevator/téléchargement.png" alt="change this years" width="500" height="200"><br>   --> 
+					
 				
 
 
@@ -735,27 +669,13 @@
             GMAP.JS 
             http://hpneo.github.io/gmaps/
         -->
-        <script src="//maps.google.com/maps/api/js?key=AIzaSyCqCn84CgZN6o1Xc3P4dM657HIxkX3jzPY"></script>
+       
         <script src="assets/plugins/gmaps.js"></script>
         <script>
 
             jQuery(document).ready(function(){
 
-                /**
-                    @BASIC GOOGLE MAP
-                **/
-                var map2 = new GMaps({
-                    div: '#map2',
-                    lat: -12.043333,
-                    lng: -77.028333,
-                    scrollwheel: false
-                });
-
-                var marker = map2.addMarker({
-                    lat: -12.043333,
-                    lng: -77.028333,
-                    title: 'Company, Inc.'
-                });
+                
 
             });
 
